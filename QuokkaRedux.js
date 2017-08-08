@@ -111,7 +111,15 @@ state10;
 // 1. Change Joey's age to 13
 // 2. Create an action builder for update cereal and use it to update your state
 
-
+function reducer(state, action) {
+    switch (action.type) {
+        case "update_age":
+            return Object.assign({}, state, { age: action.age })
+    }
+}
+let ageAction2 = updateAge(12);
+let state10 = reducer(allObjectsCombined, ageAction2);
+state10;
 
 
 /*
