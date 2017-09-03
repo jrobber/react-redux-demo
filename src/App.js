@@ -44,15 +44,19 @@ class App extends Component {
 }
 
 //Input function to get data from state
-function mapStateToProps(state) {
+function moveFromStoreToProps(state) {
   //state refers to the redux state
   if(!state) return {};
 
   let {people, name} = state;
 
+  // return { //This object gets mashed/merged into this.props
+  //   people,
+  //   name
+  // }
   return { //This object gets mashed/merged into this.props
-    people,
-    name
+    people: people,
+    name: name
   }
 }
 
@@ -62,11 +66,11 @@ function mapStateToProps(state) {
 // We importeded these up above with this line of code :
 // import {updateAge, addPerson} from './reducer'
 let outputActions = {
-  updateName,
-  addPerson
+  updateName: updateName,
+  addPerson: addPerson
 }
 
-let reduxInsAndOuts = connect(mapStateToProps, outputActions)
+let reduxInsAndOuts = connect(moveFromStoreToProps, outputActions)
 export default reduxInsAndOuts(App);
 //This is often done in a single line of code like this:
 //connect(mapStateToProps, outputActions)(App)
